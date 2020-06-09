@@ -1,24 +1,35 @@
 # yz-dync-form
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+## Install
+```shell
+npm install yz-dync-form -S
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+## Quick Start
+``` javascript
+import Vue from 'vue'
+import Element from 'element-ui'
+import YzDyncForm from 'yz-dync-form'
+
+Vue.use(Element)
+Vue.use(YzDyncForm)
+
+// or
+import {
+  FormDesign,
+  FormView,
+  FormDialogView
+  // ...
+} from 'yz-dync-form'
+
+Vue.use(FormDesign)
+Vue.use(FormView)
+Vue.use(FormDialogView)
+
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Browser Support
+Modern browsers and Internet Explorer 10+.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Changelog
+Detailed changes for each release are documented in the [release notes](https://github.com/xlkai/yz-dync-form/releases).

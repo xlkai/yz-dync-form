@@ -1,0 +1,253 @@
+@import './common/var.scss';
+@import './mixins/mixins.scss';
+
+@mixin itemActive() {
+  background-color: $dync-form-bg-color;
+}
+
+@include b(design) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  @include e(main) {
+    position: absolute;
+    left: 0;
+    right: $dync-form-property-width;
+    top: 0;
+    bottom: 0;
+
+    @include e(header) {
+      position: absolute;
+      height: $dync-form-header-height;
+      line-height: $dync-form-header-height;
+      left: 0;
+      right: 0;
+      border: 1px solid $dync-form-border-color;
+      padding: 0 20px;
+      display: flex;
+      box-sizing: border-box;
+  
+      @include e(title) {
+        font-size: 18px;
+        
+        > span {
+          margin-left: 5px;
+        }
+      }
+
+      @include e(btngroup) {
+        flex: 1;
+        text-align: right;
+      }
+    }
+  
+    @include e(content) {
+      display: flex;
+      width: 100%;
+      position: absolute;
+      top: $dync-form-header-height;
+      bottom: 0;
+
+      @include e(components) {
+        width: 250px;
+
+        @include e(component) {
+
+          @include e(component_title) {
+            font-size: 15px;
+            padding: 5px 0;
+          }
+
+          @include e(component_item) {
+            box-sizing: border-box;
+            font-size: 14px;
+            width: 48%;
+            display: inline-block;
+            background-color: $dync-form-bg-color;
+            border: 1px solid $dync-form-bg-color;
+            padding: 7px 0 7px 9%;
+            margin: 4px 1%;
+            cursor: move;
+            border-radius: 3px;
+
+            &:hover {
+              border: 1px dashed $dync-form-theme-color;
+              color: $dync-form-theme-color;
+            }
+
+            > i {
+              margin-right: 4px;
+            }
+          }
+
+        }
+
+      }
+    
+      @include e(body) {
+        flex: 1;
+        border-left: 1px solid $dync-form-border-color;
+        border-right: 1px solid $dync-form-border-color;
+        border-bottom: 1px solid $dync-form-border-color;
+        box-sizing: border-box;
+
+        .design-ghost {
+          width: 100%;
+          height: 60px;
+          line-height: 60px;
+          border-top: 3px solid $dync-form-theme-color;
+          margin: 0;
+          padding: 0 20px;
+          border-radius: 0;
+        }
+
+        @include e(row) {
+
+          &:first-child {
+            margin-top: 15px;
+          }
+
+          @include when(row) {
+            min-height: 60px;
+            border: 1px dashed $dync-form-border-color;
+            border-radius: 3px;
+            margin-left: 5px !important;
+            margin-right: 5px !important;
+            padding-top: 20px;
+            padding-bottom: 5px;
+
+            &:hover {
+              border-color: $dync-form-theme-color;
+            }
+
+            .el-col {
+              padding-left: 0 !important;
+              padding-right: 0 !important;
+
+              &:last-child {
+                @include e(item, false) {
+                  margin-bottom: 0;
+                }
+              }
+            }
+
+            @include e(item, false) {
+              padding: 10px;
+            }
+
+            @include when(active) {
+              border-color: $dync-form-theme-color;
+            }
+          }
+
+        }
+
+        @include e(item) {
+          margin-bottom: 5px;
+          box-sizing: border-box;
+          padding: 10px 15px;
+
+          &.el-form-item--mini,
+          &.el-form-item--small {
+            margin-bottom: 5px;
+          }
+
+          @include e(btns) {
+            position: absolute;
+            font-size: 15px;
+            right: 0;
+            top: -30px;
+
+            @include when(row) {
+              top: -15px;
+              right: 10px;
+            }
+
+            @include e(btns__delete) {
+              color: #F56C6C;
+              background-color: #fff;
+              border: 1px solid #F56C6C;
+              border-radius: 50%;
+              padding: 4px;
+              cursor: pointer;
+              z-index: 9999;
+
+              &:hover {
+                color: #fff;
+                background-color: #F56C6C;
+              }
+            }
+          }
+
+          @include when(active) {
+            @include itemActive
+          }
+
+          &:hover {
+            @include itemActive
+          }
+        }
+      }
+
+    }
+
+  }
+
+  @include e(property) {
+    width: $dync-form-property-width;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    
+    .el-tabs__item {
+      height: $dync-form-header-height;
+    }
+
+    .el-tabs__header {
+      margin: 0;
+    }
+
+    .el-select,
+    .el-date-editor {
+      width: 100%;
+    }
+  }
+
+  @include e(option) {
+
+    @include e(option__item) {
+      display: flex;
+      align-items: center;
+      margin: 4px 0;
+  
+      >* {
+        margin: 0 4px;
+      }
+  
+      [class^="el-icon-"] {
+        font-size: 24px;
+        color: #777;
+      }
+    }
+  
+    @include e(option__drage) {
+      cursor: move;
+    }
+  
+    @include e(option__add) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      [class^="el-icon-"] {
+        font-size: 15px;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,15 @@
+@import './common/var.scss';
+@import './mixins/mixins.scss';
+
+@include b(form-view) {
+
+  @include e(empty) {
+    font-size: 18px;
+  }
+
+  @include e(dialog) {
+    .el-dialog__body {
+      padding: 20px;
+    }
+  }
+}

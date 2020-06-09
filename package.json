@@ -1,15 +1,40 @@
 {
   "name": "yz-dync-form",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+  "main": "lib/index.common.js",
+  "files": [
+    "lib",
+    "src",
+    "packages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xlkai/yz-dync-form.git"
   },
-  "dependencies": {
+  "keywords": [
+    "vue",
+    "element-ui",
+    "form"
+  ],
+  "bugs": {
+    "url": "https://github.com/xlkai/yz-dync-form/issues"
+  },
+  "unpkg": "lib/index.js",
+  "style": "lib/styles/index.css",
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "lib": "vue-cli-service build --target lib --name YzDyncForm --filename index src/index.js",
+    "build:file": "cp-cli src lib && rimraf lib/index.js",
+    "dist": "npm run clean && npm run lint && npm run lib && npm run build:file && npm run build:style",
+    "lint": "vue-cli-service lint",
+    "clean": "rimraf lib && rimraf packages/*/lib",
+    "build:style": "rimraf lib/styles && rimraf packages/styles/lib && gulp build --gulpfile packages/styles/gulpfile.js && cp-cli packages/styles/lib lib/styles"
+  },
+  "peerDependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "element-ui": "^2.13.2",
+    "vue": "^2.6.11",
+    "vuedraggable": "^2.23.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
@@ -17,29 +42,24 @@
     "@vue/cli-service": "~4.4.0",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
+    "core-js": "^3.6.5",
+    "cp-cli": "^2.0.0",
+    "element-ui": "^2.13.2",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^4.1.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "vue": "^2.6.11",
+    "vuedraggable": "^2.23.2",
     "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/standard"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",

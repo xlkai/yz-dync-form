@@ -1,0 +1,44 @@
+@import './config.scss';
+
+@mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element, $root: true){
+  $e: $element !global;
+  $selector: &;
+  $currentSelector: "";
+
+  @each $itm in $element {
+    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $itm + ','}
+  }
+
+  @if $root {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  } @else {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  }
+  
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
