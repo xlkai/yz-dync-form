@@ -108,6 +108,11 @@ class Store {
       }
     }
     this.components.set(component.type, component)
+
+    // 注册render
+    if (component.render) {
+      this.registerRender(component.type, component.render)
+    }
   }
 
   /**

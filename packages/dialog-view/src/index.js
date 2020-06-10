@@ -1,7 +1,7 @@
 import YzFormView from 'yz-dync-form/packages/view'
 
 export default {
-  name: 'FormDialogView',
+  name: 'YzFormDialogView',
   components: { YzFormView },
   props: {
     visible: Boolean,

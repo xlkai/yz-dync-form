@@ -98,7 +98,7 @@ export default {
     },
     onSave() {
       // 保存
-      this.$emit('submit', this.previewData)
+      this.$emit('submit', this.clone ? this.clone(this.previewData) : this.previewData)
     },
     onPreview() {
       // 预览

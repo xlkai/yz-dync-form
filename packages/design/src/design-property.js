@@ -1,7 +1,6 @@
 import FormProp from './props/form.vue'
 import RowProp from './props/row.vue'
 import Property from './props/property.vue'
-import { config, configStore } from 'yz-dync-form/src/core.js'
 
 export default {
   components: { FormProp, RowProp, Property },
@@ -35,17 +34,11 @@ export default {
         render(h) {
           const { col, fieldType } = this.store.active
 
-          // 数据格式转换
-          const component = configStore.getComponent(fieldType)
-          const valueFormat = component[config.convertName] || ((value, field) => {
-            return value
-          })
-
           return (
             <property
               v-model={this.store.active.col}
               type={fieldType}
-              on-value-change={value => this.$set(this.store.form.model, col.field.prop, valueFormat(value, col.field))}/>
+              on-value-change={value => this.$set(this.store.form.model, col.field.prop, value)}/>
           )
         },
         show() {
