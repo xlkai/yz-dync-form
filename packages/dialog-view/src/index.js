@@ -7,7 +7,8 @@ export default {
     visible: Boolean,
     data: {
       type: Object,
-      required: true
+      required: true,
+      rules: Object
     }
   },
   data() {
@@ -30,12 +31,12 @@ export default {
     }
   },
   render(h) {
-    const { show, onVisible, data } = this
+    const { show, onVisible, data, rules } = this
     return (
       <el-dialog class="yz-form-view_dialog" visible={show} props={this.$attrs}
         on={{ 'update:visible': onVisible }}>
         <slot name="title" />
-        <yz-form-view data={data} />
+        <yz-form-view data={data} rules={rules} />
         <slot name="footer" />
       </el-dialog>
     )

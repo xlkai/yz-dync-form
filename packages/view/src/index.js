@@ -7,12 +7,17 @@ export default {
   name: 'YzFormView',
   mixins: [form],
   props: {
-    data: Object
+    data: Object,
+    rules: Object
   },
   computed: {
     formProp() {
       const prop = getProps(this.data, componentProp.form)
       prop.model = this.formData
+      // 表单校验规则
+      if (this.rules) {
+        prop.rules = this.rules
+      }
       return prop
     },
     rows() {

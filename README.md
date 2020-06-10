@@ -86,10 +86,10 @@ export default {
 <template>
   <div>
     <!-- 普通表单查看 -->
-    <yz-form-view :data="form" />
+    <yz-form-view :data="form" :rules="rules" />
 
     <!-- 自带Dialog表单查看 -->
-    <yz-form-dialog-view :data="form" v-bind="dialogProp">
+    <yz-form-dialog-view :data="form" :rules="rules" v-bind="dialogProp">
       <template slot="title">
         <!-- dialog标题slot -->
       </template>
@@ -104,6 +104,9 @@ export default {
 export default {
   data() {
     return {
+      rules: {
+        //表单校验规则
+      },
       form: {
         rows: [],
         //...
