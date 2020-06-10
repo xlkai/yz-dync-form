@@ -25,6 +25,7 @@
     "dev": "vue-cli-service serve",
     "lib": "vue-cli-service build --target lib --name YzDyncForm --filename index src/index.js",
     "build:file": "cp-cli src lib && rimraf lib/index.js",
+    "build:doc": "vue-cli-service build --dest docs",
     "dist": "npm run clean && npm run lint && npm run lib && npm run build:file && npm run build:style",
     "lint": "vue-cli-service lint",
     "clean": "rimraf lib && rimraf packages/*/lib",
