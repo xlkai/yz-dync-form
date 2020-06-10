@@ -1,6 +1,6 @@
 # yz-dync-form
 
->基于element-ui 2.x开发的动态表单设计器组件，以及表单查看组件。
+>基于element-ui 2.x开发的动态表单设计器组件，以及表单查看组件。[点击查看](https://xlkai.github.io/yz-dync-form)
 
 ## 丰富特性
 >1.基于element-ui 2.x；<br>
