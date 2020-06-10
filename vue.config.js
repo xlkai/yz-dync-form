@@ -5,6 +5,7 @@ function resolve(dir) {
 
 module.exports = {
   outputDir: 'lib',
+  publicPath: 'yz-dync-form',
   productionSourceMap: false,
   filenameHashing: false,
   pages: {
