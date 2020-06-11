@@ -57,6 +57,7 @@ import DesignProperty from './design-property.js'
 import Store from './store'
 import YzFormDialogView from 'yz-dync-form/packages/dialog-view'
 
+const deepmerge = require('deepmerge')
 export default {
   name: 'YzFormDesign',
   components: { DesignComponent, DesignBody, DesignProperty, YzFormDialogView },
@@ -65,7 +66,8 @@ export default {
       type: Number,
       default: 600
     },
-    clone: Function
+    clone: Function,
+    data: Object
   },
   data() {
     return {
@@ -84,6 +86,16 @@ export default {
   },
   created() {
     this.store = new Store()
+    // 初始化加载
+    if (this.data) {
+      const { form, rows } = this.data
+      if (form) {
+        deepmerge(this.store.form, form)
+      }
+      if (rows && rows.length) {
+        this.store.rows = rows
+      }
+    }
   },
   methods: {
     onClear() {

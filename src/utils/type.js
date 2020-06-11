@@ -23,7 +23,7 @@ export function clean(prop) {
     const itm = prop[key]
     if (itm && isObject(itm)) {
       clean(itm)
-    } else if (itm === undefined || itm === null || itm === '') {
+    } else if (itm === undefined || itm === null || itm === '' || key === 'showBtn') {
       delete prop[key]
     }
   }
