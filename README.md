@@ -56,6 +56,8 @@ Vue.use(FormDialogView)
   <yz-form-design
     :height="domHeight"
     :clone="clone"
+    :data="formData"
+    :custom-button="customButton"
     @submit="onSubmit"/>
 </template>
 
@@ -63,7 +65,38 @@ Vue.use(FormDialogView)
 export default {
   data() {
     return {
-      domHeight: 600 //表单设计器整体高度
+      domHeight: 600, //表单设计器整体高度
+
+      formData: {
+        form: {
+          labelPosition: 'right',
+          size: 'small'
+        }, //表单配置属性
+        rows: [{
+          field: {
+            type: 'text',
+            prop: 'field0',
+            label: '单行文本',
+            required: true,
+            _config: {
+              type: 'text',
+              clearable: true,
+              placeholder: '请输入'
+            }
+          }
+        }] //组件
+      },
+
+      //自定义按钮，Object为传单个按钮，Array为传多个按钮
+      customButton: [{
+        name: '关闭',
+        type: 'danger',
+        index: 0,
+        onClick() {
+          console.log('------close-----')
+        }
+      }
+      }]
     }
   },
   methods: {

@@ -70,7 +70,7 @@ class Store {
       console.warn("Failed to register group,  because 'name' or 'type' attribute is missing.", group)
       return
     }
-    if (index && index >= 0) {
+    if (index !== undefined && index >= 0) {
       this.groups.splice(index, 0, group)
     } else {
       this.groups.push(group)
@@ -141,7 +141,7 @@ class Store {
   registerDataSource(datasource, index) {
     const itm = this.getDataSource(datasource.type)
     if (!itm) {
-      if (index && index >= 0) {
+      if (index !== undefined && index >= 0) {
         this.datasources.splice(index, 0, datasource)
       } else {
         this.datasources.push(datasource)
@@ -193,35 +193,6 @@ class Store {
 }
 
 export const configStore = new Store()
-
-/**
- * 组别保存
- */
-class GroupStore {
-  constructor() {
-    this.datas = []
-    // 默认组件
-    Object.keys(ComponentGroup)
-      .forEach(key => {
-        this.datas.push(ComponentGroup[key])
-      })
-  }
-
-  register(group, index) {
-    // 检查group是否有效
-    if (!group.name || !group.type) {
-      console.warn("Failed to register group,  because 'name' or 'type' attribute is missing.", group)
-      return
-    }
-    if (index && index >= 0) {
-      this.datas.splice(index, 0, group)
-    } else {
-      this.datas.push(group)
-    }
-  }
-}
-
-export const groupStore = new GroupStore()
 
 /**
  * 配置项

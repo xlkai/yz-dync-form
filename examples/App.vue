@@ -1,13 +1,55 @@
 <template>
   <div id="app">
-    <yz-form-design :height="height" />
+    <yz-form-design
+      :height="height"
+      :custom-button="customBtn"
+      :data="form" />
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      height: 500
+      height: 500,
+      customBtn: {
+        name: '关闭',
+        type: 'danger',
+        index: 0,
+        onClick() {
+          console.log(this)
+          console.log('------close-----')
+        }
+      },
+      form: {
+        form: { labelPosition: 'right' },
+        rows: [{
+          field: {
+            type: 'text',
+            prop: 'field0',
+            label: '单行文本',
+            _config: { type: 'text', placeholder: '请输入' }
+          }
+        },
+        {
+          field: {
+            type: 'textarea',
+            prop: 'field1',
+            label: '多行文本',
+            _config: { type: 'textarea', placeholder: '请输入' }
+          }
+        },
+        {
+          cols: [{
+            field: {
+              type: 'text',
+              prop: 'field2',
+              label: '单行文本',
+              _config: { type: 'text', placeholder: '请输入', size: '', value: '' }
+            }
+          }],
+          gutter: 15
+        }]
+      }
     }
   },
   mounted() {
