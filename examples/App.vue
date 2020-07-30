@@ -12,11 +12,14 @@ export default {
     return {
       height: 500,
       customBtn: {
-        name: '关闭',
+        name: '自定义按钮',
         type: 'danger',
         index: 0,
-        onClick() {
-          console.log('------close-----')
+        onClick: () => {
+          this.$message({
+            type: 'success',
+            message: '我被点击了'
+          })
         }
       },
       form: {

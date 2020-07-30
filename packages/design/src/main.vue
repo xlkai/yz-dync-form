@@ -102,17 +102,8 @@ export default {
     data: {
       handler(val) {
         // 初始化加载
-        if (val) {
-          const { form, rows } = val
-          if (form) {
-            deepmerge(this.store.form, form)
-          }
-          if (rows && rows.length) {
-            this.store.rows = rows
-          }
-        }
-      },
-      immediate: true
+        this.initData(val)
+      }
     },
     customButton: {
       handler(val) {
@@ -139,6 +130,20 @@ export default {
   },
   created() {
     this.store = new Store()
+    this.initData(this.data)
+  },
+  methods: {
+    initData(val) {
+      if (val) {
+        const { form, rows } = val
+        if (form) {
+          deepmerge(this.store.form, form)
+        }
+        if (rows && rows.length) {
+          this.store.rows = rows
+        }
+      }
+    }
   }
 }
 </script>
