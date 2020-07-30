@@ -16,7 +16,6 @@ export default {
         type: 'danger',
         index: 0,
         onClick() {
-          console.log(this)
           console.log('------close-----')
         }
       },
